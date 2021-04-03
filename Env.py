@@ -12,8 +12,10 @@ class CarDrivingEnvironment(gym.Env):
     # They must be gym.spaces objects
     # 3 actions for the car:
     # Gas, Brake, Steer (left/right)
-    self.action_space = spaces.Box(low = np.array([-1,0,0]), high = np.array([+1,+1,+1]))
-    # Prices contains the OHCL values for the last five prices
+    # gas from -1 to 1, brake 0 to 1, steer -1 to 1
+    self.action_space = spaces.Box(low = np.array([-1,0,-1]), high = np.array([+1,+1,+1]))
+    # Observations are 4 blocks of the track (current + 3), speed, position(x,y), direction (angle)
+    #todo
     self.observation_space = spaces.Box(
       low=0, high=1, shape=(6, 6), dtype=np.float16)
 
